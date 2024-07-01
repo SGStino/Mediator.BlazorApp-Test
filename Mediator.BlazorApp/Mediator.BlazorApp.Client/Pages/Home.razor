@@ -1,0 +1,20 @@
+﻿@page "/"
+@using Contracts
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+@responseTest;
+
+@code{
+    [Inject] public required IMediator Mediator { get; set; }
+    private string? responseTest;
+    protected override async Task OnParametersSetAsync()
+    {
+        var response = await Mediator.Send(new TestRequest("hello world"), default);
+        this.responseTest = response.Test;
+        await base.OnParametersSetAsync();
+    }
+}
