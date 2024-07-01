@@ -6,9 +6,19 @@
     <Nullable>enable</Nullable>
     <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
     <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+
+	  <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	  <!-- The path where the generated files will be placed -->
+	  <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<!-- Tells the compiler to ignore the generated files when compiling the project (it will still be part of the compilation) -->
+		<Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+		<None Include="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
     <PackageReference Include="Mediator.SourceGenerator" Version="2.1.7">
       <PrivateAssets>all</PrivateAssets>

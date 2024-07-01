@@ -7,7 +7,7 @@ namespace Mediator.BlazorApp.Client.Handlers
     {
         public ValueTask<TestResponse> Handle(TestRequest request, CancellationToken cancellationToken)
         {
-            // TODO: forward request to API;
+            // TODO: do some server side logic here
             return ValueTask.FromResult(new TestResponse("server generated response for " + request.Test));
         }
     }
